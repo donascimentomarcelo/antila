@@ -15,8 +15,8 @@ public record ManualEntryRequest(
         @Max(value = 2100, message = "Invalid year")
         Integer entryYear,
 
-        @NotBlank(message = "Product id is required")
-        @Size(min = 1, max = 4, message = "Product id must have up to 4 characters")
+        @NotBlank(message = "Product is required")
+        @Size(min = 1, max = 4, message = "Product must have up to 4 characters")
         String entryProductId,
 
         @NotNull(message = "Amount is required")
