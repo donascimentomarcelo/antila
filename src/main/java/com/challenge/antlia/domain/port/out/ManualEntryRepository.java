@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ManualEntryRepository {
-    void create(ManualEntry entry);
+    ManualEntry create(ManualEntry entry);
     List<ManualEntry> findAll();
 
     Optional<Integer> findTopByMonthAndYearOrderByEntryNumberDesc(Integer month, Integer year);

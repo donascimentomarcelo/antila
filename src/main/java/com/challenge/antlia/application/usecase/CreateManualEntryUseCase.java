@@ -17,7 +17,7 @@ public class CreateManualEntryUseCase implements CreateManualEntryPort {
     }
 
     @Override
-    public void execute(ManualEntry manualEntry) {
+    public ManualEntry execute(ManualEntry manualEntry) {
 
         Integer nextEntryNumber = manualEntryRepository
                     .findTopByMonthAndYearOrderByEntryNumberDesc(manualEntry.month(), manualEntry.year())
@@ -37,6 +37,6 @@ public class CreateManualEntryUseCase implements CreateManualEntryPort {
         );
 
 
-        manualEntryRepository.create(entryToSave);
+        return manualEntryRepository.create(entryToSave);
     }
 }

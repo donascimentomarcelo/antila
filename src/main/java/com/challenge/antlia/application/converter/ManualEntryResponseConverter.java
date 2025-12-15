@@ -2,28 +2,22 @@ package com.challenge.antlia.application.converter;
 
 import com.challenge.antlia.adapters.in.web.response.ManualEntryResponse;
 import com.challenge.antlia.domain.model.ManualEntry;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class ManualEntryResponseConverter {
-
-    public List<ManualEntryResponse> convert(final List<ManualEntry> source) {
-        return source.stream().map(this::toResponse).toList();
-    }
-
-    private ManualEntryResponse toResponse(ManualEntry entry) {
+public class ManualEntryResponseConverter implements Converter<ManualEntry, ManualEntryResponse> {
+    @Override
+    public ManualEntryResponse convert(final ManualEntry source) {
         return new ManualEntryResponse(
-                entry.month(),
-                entry.year(),
-                entry.productId(),
-                entry.amount(),
-                entry.cosif(),
-                entry.description(),
-                entry.entryNumber(),
-                entry.entryDate(),
-                entry.userId()
-        );
+                source.month(),
+                source.year(),
+                source.productId(),
+                source.amount(),
+                source.cosif(),
+                source.description(),
+                source.entryNumber(),
+                source.entryDate(),
+                source.userId());
     }
 }

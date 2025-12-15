@@ -1,6 +1,6 @@
 package com.challenge.antlia.adapters.web;
 
-import com.challenge.antlia.application.converter.ManualEntryResponseConverter;
+import com.challenge.antlia.application.converter.ManualEntryListConverter;
 import com.challenge.antlia.domain.port.in.CreateManualEntryPort;
 import com.challenge.antlia.domain.port.in.ListManualEntriesPort;
 import jakarta.inject.Named;
@@ -32,7 +32,7 @@ public class ManualEntryControllerTest {
     ListManualEntriesPort listManualEntriesPort;
 
     @MockitoBean
-    ManualEntryResponseConverter manualEntryResponseConverter;
+    ManualEntryListConverter manualEntryResponseConverter;
 
     @Test
     @Named("should create a manual entry successfully")

@@ -2,7 +2,7 @@ package com.challenge.antlia.adapters.in.web;
 
 import com.challenge.antlia.adapters.in.web.dto.ManualEntryRequest;
 import com.challenge.antlia.adapters.in.web.response.ManualEntryResponse;
-import com.challenge.antlia.application.converter.ManualEntryResponseConverter;
+import com.challenge.antlia.application.converter.ManualEntryListConverter;
 import com.challenge.antlia.domain.model.ManualEntry;
 import com.challenge.antlia.domain.port.in.CreateManualEntryPort;
 import com.challenge.antlia.domain.port.in.ListManualEntriesPort;
@@ -20,10 +20,10 @@ public class ManualEntryController {
     private final CreateManualEntryPort createManualEntryPort;
     private final ListManualEntriesPort listManualEntriesPort;
     private final ConversionService conversionService;
-    private final ManualEntryResponseConverter manualEntryRequestConverter;
+    private final ManualEntryListConverter manualEntryRequestConverter;
 
     public ManualEntryController(CreateManualEntryPort createManualEntryPort, final ListManualEntriesPort listManualEntriesPort,
-                                 final ConversionService conversionService, final ManualEntryResponseConverter manualEntryRequestConverter) {
+                                 final ConversionService conversionService, final ManualEntryListConverter manualEntryRequestConverter) {
         this.createManualEntryPort = createManualEntryPort;
         this.listManualEntriesPort = listManualEntriesPort;
         this.conversionService = conversionService;
@@ -31,10 +31,11 @@ public class ManualEntryController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createManualEntry(@RequestBody @Valid ManualEntryRequest request) {
+    public ResponseEntity<ManualEntryResponse> createManualEntry(@RequestBody @Valid ManualEntryRequest request) {
         var manualEntry = conversionService.convert(request, ManualEntry.class);
-        createManualEntryPort.execute(manualEntry);
-        return ResponseEntity.ok().build();
+        final ManualEntry response = createManualEntryPort.execute(manualEntry);
+        var manualEntryResponse = conversionService.convert(response, ManualEntryResponse.class);
+        return ResponseEntity.ok(manualEntryResponse);
     }
 
     @GetMapping

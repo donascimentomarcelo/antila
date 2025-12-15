@@ -20,9 +20,10 @@ public class ManualEntryRepositoryAdapter implements ManualEntryRepository {
     }
 
     @Override
-    public void create(ManualEntry entry) {
+    public ManualEntry create(ManualEntry entry) {
         final var entryEntity = ManualEntryEntity.fromDomain(entry);
         jpaManualEntryRepository.save(entryEntity);
+        return entry;
     }
 
     @Override
