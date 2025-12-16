@@ -20,6 +20,6 @@ public class ManualEntryRequestConverter implements Converter<ManualEntryRequest
                 source.entryDescription(),
                 null,
                 new Date(),
-                1); // pega o id do usuario
+                "TESTE");
     }
 }

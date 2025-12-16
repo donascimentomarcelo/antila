@@ -12,6 +12,6 @@ public record ManualEntryResponse(
         String entryDescription,
         Integer entryNumber,
         Date entryDate,
-        Integer userId
+        String userId
 ) {
 }

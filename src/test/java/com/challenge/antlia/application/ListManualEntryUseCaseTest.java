@@ -29,7 +29,8 @@ public class ListManualEntryUseCaseTest {
     public void itShouldExecuteSuccessfully() {
 
         List<ManualEntry> list = new ArrayList<>();
-        list.add(new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null, null ,1));
+        list.add(new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null, null ,
+                "TESTE"));
 
         when(manualEntryRepository.findAll())
                 .thenReturn(list);

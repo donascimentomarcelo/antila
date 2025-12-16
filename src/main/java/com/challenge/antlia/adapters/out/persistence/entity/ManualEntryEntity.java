@@ -26,7 +26,7 @@ public class ManualEntryEntity {
     private Date entryDate;
 
     @Column(name = "COD_USUARIO")
-    private Integer userId;
+    private String userId;
 
     @Column(name = "VAL_VALOR")
     private BigDecimal amount;
@@ -34,7 +34,7 @@ public class ManualEntryEntity {
     protected ManualEntryEntity() {}
 
     public ManualEntryEntity(final ManualEntryId id, final String description, final Date entryDate,
-                             final Integer userId,
+                             final String userId,
                              final BigDecimal amount) {
         this.id = id;
         this.description = description;

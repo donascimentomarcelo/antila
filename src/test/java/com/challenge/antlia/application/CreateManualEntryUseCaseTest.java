@@ -34,7 +34,8 @@ public class CreateManualEntryUseCaseTest {
         when(manualEntryRepository.findTopByMonthAndYearOrderByEntryNumberDesc(any(), any()))
                 .thenReturn(Optional.of(20));
 
-        final var entry = new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null, null ,1);
+        final var entry = new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null,
+                null ,"TESTE");
 
         useCase.execute(entry);
 
@@ -47,7 +48,8 @@ public class CreateManualEntryUseCaseTest {
         when(manualEntryRepository.findTopByMonthAndYearOrderByEntryNumberDesc(any(), any()))
                 .thenReturn(Optional.empty());
 
-        final var entry = new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null, null ,1);
+        final var entry = new ManualEntry(1, 2025, "PD01", BigDecimal.valueOf(900000L), "COSIF01", "any desc", null,
+                null ,"TESTE");
 
         useCase.execute(entry);
 

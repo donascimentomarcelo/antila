@@ -12,5 +12,5 @@ public record ManualEntry(
         String description,
         Integer entryNumber,
         Date entryDate,
-        Integer userId) {
+        String userId) {
 }
