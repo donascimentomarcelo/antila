@@ -1,19 +1,24 @@
 spring:
   application:
     name: antlia
+  profiles:
+    active: localhost
+
+---
+spring:
+  config:
+    activate:
+      on-profile: localhost
   datasource:
-    url: jdbc:h2:mem:antlia
-    driver-class-name: org.h2.Driver
+    url: jdbc:sqlserver://VMEXAME15\\SQLEXPRESS:1433;databaseName=MovimentosManuais;encrypt=true;trustServerCertificate=true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    password: candidato123
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.SQLServerDialect
     hibernate.ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.SQLServerDialect
